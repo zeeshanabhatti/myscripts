@@ -30,7 +30,7 @@ if (!excludedPages.includes(window.location.href)) {
       // Check if the password has expired for the entered username
       if (users.find(user => user.username === un).expiryDate <= new Date()) {
         alert('Your account has been expired. Please, renew your User Name and Password.');
-        location.href = 'zeepaktech.blogspot.com'; // Redirect if expired
+        location.href = 'https://zeepaktech.blogspot.com'; // Redirect if expired
       } else {
         // Store the username and password in cookies
         document.cookie = "username=" + un;
