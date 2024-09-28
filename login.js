@@ -1,10 +1,10 @@
 // Create an array to store user objects with usernames, passwords, and expiry dates
 var users = [
   { username: 'user1', password: '123123', expiryDate: new Date(2023, 2, 25) },
-  { username: 'zeeshan', password: 'unlockit', expiryDate: new Date(2024, 12, 30) },
-  { username: 'sonia', password: 'opennow', expiryDate: new Date(2024, 12, 30) },
-  { username: 'student', password: '2024', expiryDate: new Date(2024, 12, 30) },
-  { username: 'guest', password: '1234', expiryDate: new Date(2099, 12, 30) }
+  { username: 'zeeshan', password: 'unlockit', expiryDate: new Date(2024, 11, 30) }, // Month is 0-based
+  { username: 'sonia', password: 'opennow', expiryDate: new Date(2024, 11, 30) },
+  { username: 'student', password: '2024', expiryDate: new Date(2024, 11, 30) },
+  { username: 'guest', password: '1234', expiryDate: new Date(2099, 11, 30) }
 ];
 
 var excludedPages = [
@@ -28,13 +28,16 @@ if (!excludedPages.includes(window.location.href)) {
       location.href = 'https://zeepaktech.blogspot.com'; // Redirect if not found
     } else {
       // Check if the password has expired for the entered username
-      if (users.find(user => user.username === un).expiryDate <= new Date()) {
+      var user = users.find(user => user.username === un);
+      if (user.expiryDate <= new Date()) {
         alert('Your account has been expired. Please, renew your User Name and Password.');
         location.href = 'https://zeepaktech.blogspot.com'; // Redirect if expired
       } else {
-        // Store the username and password in cookies
-        document.cookie = "username=" + un;
-        document.cookie = "password=" + pd;
+        // Store the username and password in cookies with expiration
+        var expiryDate = new Date();
+        expiryDate.setDate(expiryDate.getDate() + 30); // Set to expire in 30 days
+        document.cookie = "username=" + encodeURIComponent(un) + "; expires=" + expiryDate.toUTCString() + "; path=/";
+        document.cookie = "password=" + encodeURIComponent(pd) + "; expires=" + expiryDate.toUTCString() + "; path=/";
       }
     }
   }
