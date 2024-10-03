@@ -9,12 +9,12 @@ var users = [
 ];
 
 var excludedPages = [
-  'https://aktvnovelas.blogspot.com/',
-  'https://aktvnovelas.blogspot.com/?m=1',
-  'https://aktvnovelas.blogspot.com/p/alert.html',
-  'https://aktvnovelas.blogspot.com/p/alert.html/?m=1'
-  'https://aktvnovelas.blogspot.com/p/download.html',
-  'https://aktvnovelas.blogspot.com/p/download.html/?m=1'
+  'https://zeepaktech.blogspot.com/',
+  'https://zeepaktech.blogspot.com/?m=1',
+  'https://zeepaktech.blogspot.com/p/alert.html',
+  'https://zeepaktech.blogspot.com/p/alert.html/?m=1'
+  'https://zeepaktech.blogspot.com/p/download.html',
+  'https://zeepaktech.blogspot.com/p/download.html/?m=1'
 ];
 
 if (!excludedPages.includes(window.location.href)) {
