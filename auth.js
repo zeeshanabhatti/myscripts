@@ -9,12 +9,12 @@ var users = [
 ];
 
 var excludedPages = [
-  'https://zeepaktech.blogspot.com/',
-  'https://zeepaktech.blogspot.com/?m=1',
-  'https://zeepaktech.blogspot.com/p/alert.html',
-  'https://zeepaktech.blogspot.com/p/alert.html/?m=1'
-  'https://zeepaktech.blogspot.com/p/download.html',
-  'https://zeepaktech.blogspot.com/p/download.html/?m=1'
+  'https://aktvnovelas.blogspot.com/',
+  'https://aktvnovelas.blogspot.com/?m=1',
+  'https://aktvnovelas.blogspot.com/p/alert.html',
+  'https://aktvnovelas.blogspot.com/p/alert.html/?m=1'
+  'https://aktvnovelas.blogspot.com/p/download.html',
+  'https://aktvnovelas.blogspot.com/p/download.html/?m=1'
 ];
 
 if (!excludedPages.includes(window.location.href)) {
@@ -28,12 +28,12 @@ if (!excludedPages.includes(window.location.href)) {
 
     // Check if the entered username and password match any of the allowed users
     if (!users.some(user => user.username === un && user.password === pd)) {
-      location.href = 'https://zeepaktech.blogspot.com'; // Redirect if not found
+      location.href = 'https://aktvnovelas.blogspot.com'; // Redirect if not found
     } else {
       // Check if the password has expired for the entered username
       if (users.find(user => user.username === un).expiryDate <= new Date()) {
         alert('Your account has been expired. Please, renew your User Name and Password.');
-        location.href = 'zeepaktech.blogspot.com'; // Redirect if expired
+        location.href = 'aktvnovelas.blogspot.com'; // Redirect if expired
       } else {
         // Store the username and password in cookies
         document.cookie = "username=" + un;
