@@ -38,6 +38,11 @@ if (!excludedPages.includes(window.location.href)) {
         // Store the username and password in cookies
         document.cookie = "username=" + un;
         document.cookie = "password=" + pd;
+
+        // Call this to run the rest of your scripts
+        if (typeof window.onLoginSuccess === 'function') {
+            window.onLoginSuccess();
+        }
       }
     }
   }
