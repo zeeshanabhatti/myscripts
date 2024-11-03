@@ -1,46 +1,3 @@
-<!--COPYING IS DISABLE-->
-<script src='demo-to-prevent-copy-paste-on-blogger_files/googleapis.js'/><script type='text/javascript'> if(typeof document.onselectstart!=&quot;undefined&quot; ) {document.onselectstart=new Function (&quot;return false&quot; ); } else{document.onmousedown=new Function (&quot;return false&quot; );document.onmouseup=new Function (&quot;return false&quot;); } </script>
-
-<script type='text/javascript'><!--
-// RIGHT CLICK IS DISABLE
-///////////////////////////////////
-function clickIE4() {
-    if (event.button == 2) {
-        return false;
-    }
-}
-
-function clickNS4(e) {
-    if (document.layers || document.getElementById && !document.all) {
-        if (e.which == 2 || e.which == 3) {
-            return false;
-        }
-    }
-}
-
-if (document.layers) {
-    document.captureEvents(Event.MOUSEDOWN);
-    document.onmousedown = clickNS4;
-} else if (document.all && !document.getElementById) {
-    document.onmousedown = clickIE4;
-}
-
-document.oncontextmenu = function() {
-    return false;
-};
---></script>
-    
-<!--DISABLE DEVELOPERS TOOLS--> 
-<script disable-devtool-auto='' src='https://cdn.jsdelivr.net/npm/disable-devtool'/>
-
-<script>
-  // REFRESH PAGE AFTER 3 HOURS
-setInterval(function() {
-    location.reload();
-}, 10800000); // 10800000 milliseconds = 3 hours
-</script>
-    
-<script type='text/javascript'><!--
 // Array of pages to exclude from authentication
 const excludedPages = [
     "https://www.computercourse.pk/p/alert.html?m=1",
@@ -188,4 +145,3 @@ document.getElementById('login-box').addEventListener('keypress', function(event
         login(); // Call login function when Enter is pressed
     }
 });
-</script>
