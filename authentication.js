@@ -39,18 +39,6 @@ setInterval(function() {
     location.reload();
 }, 10800000); // 10800000 milliseconds = 3 hours
 </script>
- 
-<div id='overlay'>
-    <div id='login-box'>
-        <h2>Login</h2>
-        <input autocomplete='off' id='username' placeholder='Username' type='text'/>
-        <input autocomplete='off' id='password' placeholder='Password' type='password'/>
-        <button class='login-button' onclick='login()'>Login</button>
-        <p id='error-message'/>
-        <a class='request-account' href='https://www.computercourse.pk/p/account.html' target='_blank'>Create/Renew an account</a>
-        <button class='free-sample-button' onclick='window.location.href=&quot;https://www.computercourse.pk/p/sample.html&quot;'>Free Sample</button>
-    </div>
-</div>
     
 <script type='text/javascript'><!--
 // Array of pages to exclude from authentication
