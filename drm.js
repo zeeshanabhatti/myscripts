@@ -7,10 +7,10 @@ const allowedVisitors = [
         allowedPasswords: ["book1", "book2"] // Add allowed passwords for this visitor
     },
     {
-        visitorID: "xyz456visitorId2",
-        expiryDate: "2023-11-15T12:00:00", // Expiry date in ISO format
+        visitorID: "2d9c8513f46d199f9fa6cb85f562427e",
+        expiryDate: "2025-11-15T12:00:00", // Expiry date in ISO format
         allowedPageTitle: "Protected Content",
-        allowedPasswords: [] // No passwords allowed for this visitor
+        allowedPasswords: ["book1"] // No passwords allowed for this visitor
     },
     {
         visitorID: "def789visitorId3",
