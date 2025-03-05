@@ -36,11 +36,21 @@ async function checkAccess() {
     const hideButton = document.getElementById('hide-button');
     const expiryDateElement = document.getElementById('expiry-date'); // Expiry date element
 
-    // Generate Visitor ID
-    const fpPromise = FingerprintJS.load();
-    const fp = await fpPromise;
-    const result = await fp.get();
-    const visitorID = result.visitorId;
+            let visitorID;
+
+            // Check if the Visitor ID is stored in localStorage
+            if (localStorage.getItem('visitorID')) {
+                visitorID = localStorage.getItem('visitorID');
+            } else {
+                // Generate Visitor ID if not found in localStorage
+                const fpPromise = FingerprintJS.load();
+                const fp = await fpPromise;
+                const result = await fp.get();
+                visitorID = result.visitorId;
+
+                // Store the generated Visitor ID in localStorage
+                localStorage.setItem('visitorID', visitorID);
+            }
 
     // Display Visitor ID
     visitorIdElement.textContent = visitorID;
