@@ -1,7 +1,7 @@
         // Configuration: Array of allowed Visitor IDs with expiry dates and page titles
 const allowedVisitors = [
     {
-        visitorID: "677150267b87cc522152ca20712cddfc",
+        visitorID: "4a60d51e2b25858ac84b1651ac6c83bf",
         expiryDate: "2025-12-31T23:59:59", // Expiry date in ISO format
         allowedPageTitle: "Protected Content",
         allowedPasswords: ["book1", "book2"] // Add allowed passwords for this visitor
