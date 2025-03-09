@@ -7,16 +7,16 @@ const allowedVisitors = [
         allowedPasswords: ["book1", "book2"] // Add allowed passwords for this visitor
     },
     {
-        visitorID: "2d9c8513f46d199f9fa6cb85f562427e",
+        visitorID: "bbdf4eadcc1ec1f12abb75d4f94342a0",
         expiryDate: "2025-11-15T12:00:00", // Expiry date in ISO format
         allowedPageTitle: "Protected Content",
         allowedPasswords: ["book1"] // No passwords allowed for this visitor
     },
     {
-        visitorID: "def789visitorId3",
-        expiryDate: "2023-10-20T18:30:00", // Expiry date in ISO format
+        visitorID: "2d9c8513f46d199f9fa6cb85f562427e",
+        expiryDate: "2025-10-20T18:30:00", // Expiry date in ISO format
         allowedPageTitle: "Another Page",
-        allowedPasswords: [] // No passwords allowed for this visitor
+        allowedPasswords: ["book1"] // No passwords allowed for this visitor
     }
 ];
 
