@@ -1,10 +1,9 @@
 (() => {
     // Console flood protection
     let scriptSrc = document.createElement("script");
-    scriptSrc.innerText = 'for (var i = 111; i < 222; i++) { console.error("%c[" + i.toString(16) + "] Stealth HTML Protector!", "font-size: 25px; text-shadow: 0 0 1px black; color: red;") }';
+    scriptSrc.innerText = 'for (var i = 111; i < 222; i++) { console.error("%c[" + i.toString(16) + "] Web Code Protector!", "font-size: 25px; text-shadow: 0 0 1px black; color: red;") }';
     document.head.appendChild(scriptSrc);
 
-    // Main Stealth HTML Protector object
     const HtmlGuard = {
         protections: {
             antiDevTools() {
@@ -26,7 +25,7 @@
                     }
 
                     let started = Date.now(), end;
-                    window.eval("// The use of Developer Tools is prohibited in this web application\n" + "debugger");
+                    window.eval("// The use of Developer Tools is prohibited in this web application\\n" + "debugger");
                     end = Date.now();
 
                     if ((end - started) > 50) {
@@ -51,19 +50,34 @@
                 ["log", "debug", "warn", "error", "dir", "dirxml", "assert", "table"].forEach(funcName => {
                     console[funcName] = () => null;
                 });
-            }
-        },
-        loader: {
-            loadStyleByRef(stylePath) {
-                let styleLink = document.createElement("link");
-                styleLink.rel = "stylesheet";
-                styleLink.href = stylePath;
-                document.head.appendChild(styleLink);
             },
-            loadScriptBySrc(scriptPath) {
-                let scriptSrc = document.createElement("script");
-                scriptSrc.src = scriptPath;
-                document.head.appendChild(scriptSrc);
+            obfuscateInlineScripts() {
+                const scripts = document.querySelectorAll('script:not([src])');
+                scripts.forEach(script => {
+                    const originalCode = script.textContent;
+                    if (!originalCode.trim()) return;
+                    
+                    // XOR + Base64 obfuscation
+                    const obfuscatedCode = (function(code) {
+                        const key = Math.floor(Math.random() * 256);
+                        let xorEncoded = '';
+                        for (let i = 0; i < code.length; i++) {
+                            xorEncoded += String.fromCharCode(code.charCodeAt(i) ^ key);
+                        }
+                        const base64Encoded = btoa(xorEncoded);
+                        return `
+                            (function(k, e) {
+                                var d = '';
+                                for (var i = 0; i < atob(e).length; i++) {
+                                    d += String.fromCharCode(atob(e).charCodeAt(i) ^ k);
+                                }
+                                (0, eval)(d);
+                            })(${key}, "${base64Encoded}");
+                        `;
+                    })(originalCode);
+                    
+                    script.textContent = obfuscatedCode;
+                });
             }
         }
     };
@@ -101,7 +115,7 @@
         }
 
         function obfuscatePageSource() {
-            const attributeName = "stealth-html-protector",
+            const attributeName = "web-code-protector",
                   notGuardedSelector = ":not([" + attributeName + "])";
 
             // Junk comments
@@ -109,7 +123,7 @@
                 for (var i = 0; i < randomByRange(5, 15); i++) {
                     let comment = "";
                     for (var o = 0; o < randomByRange(10, 20); o++) {
-                        comment += generateRandomString(1, 5) + "\n";
+                        comment += generateRandomString(1, 5) + "\\n";
                     }
                     element.parentNode.insertBefore(document.createComment(comment), element);
                 }
@@ -144,6 +158,7 @@
         }
 
         obfuscatePageSource();
+        HtmlGuard.protections.obfuscateInlineScripts(); // Apply script obfuscation
         setInterval(obfuscatePageSource, 2000);
     });
 
@@ -153,7 +168,4 @@
     HtmlGuard.protections.blockDrag();
     HtmlGuard.protections.blockSelection();
     HtmlGuard.protections.blockConsoleOutput();
-
-    // Update time display
-    document.getElementById("time").innerText = "Date and time: " + new Date().toLocaleString();
 })();
